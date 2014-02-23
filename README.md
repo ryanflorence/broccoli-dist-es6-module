@@ -19,6 +19,11 @@ $ npm install broccoli-dist-es6-module
 Usage
 -----
 
+```js
+// at its simplest form, just give it a tree
+require('broccoli-dist-es6-module')(tree);
+```
+
 Sample `Brocfile.js`:
 
 ```js
@@ -47,6 +52,20 @@ module.exports = function(broccoli) {
 
 };
 ```
+
+And then run broccoli:
+
+```sh
+$ broccoli build output
+```
+
+Open up output to see the results.
+
+Options
+-------
+
+- `global` - the global to attach your modules to.
+- `imports` - object map of module ids to global variable names.
 
 Notes
 -----
