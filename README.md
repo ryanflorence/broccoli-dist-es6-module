@@ -1,4 +1,4 @@
-broccoli-es6-module
+broccoli-dist-es6-module
 ===================
 
 Author your library in ES6 modules and distribute in everything under
@@ -13,7 +13,7 @@ Installation
 ------------
 
 ```sh
-$ npm install broccoli-es6-module
+$ npm install broccoli-dist-es6-module
 ```
 
 Usage
@@ -22,7 +22,7 @@ Usage
 Sample `Brocfile.js`:
 
 ```js
-var makeES6Module = require('broccoli-es6-module');
+var makeES6Module = require('broccoli-dist-es6-module');
 
 module.exports = function(broccoli) {
 

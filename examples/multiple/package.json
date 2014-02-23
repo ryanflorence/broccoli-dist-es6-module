@@ -9,7 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "broccoli-es6-module": "*",
+    "broccoli-dist-es6-module": "*",
     "broccoli": "*"
   }
 }
