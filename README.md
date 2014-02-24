@@ -72,10 +72,7 @@ Options
 Notes
 -----
 
-- This depends on some open pull requests with some of the dependencies
-  - https://github.com/square/es6-module-transpiler/pull/98
-  - https://github.com/joliss/broccoli-filter/pull/1
-  - https://github.com/rlivsey/broccoli-concat/pull/1
+- This depends this open pull request, https://github.com/square/es6-module-transpiler/pull/98
 
 - This uses the controversial `compatFix` option of the
   es6-module-transpiler which is not necessarily future proof (but
