@@ -12,7 +12,7 @@ module.exports = function (tree, userOptions) {
   return [
     makeDist('cjs')(transpileCJS(tree)),
     makeDist('amd')(transpileAMD(tree)),
-    makeConcatDist('named-amd')(transpileNamedAMD(tree)),
+    makeConcatDist('named-amd')(transpileNamedAMD(tree, options)),
     makeConcatDist('globals')(transpileGlobals(tree, options))
   ];
 };
@@ -46,19 +46,20 @@ function transpileAMD(tree) {
   });
 }
 
-function transpileNamedAMD(tree) {
+function transpileNamedAMD(tree, options) {
   return filterES6Modules(tree, {
     moduleType: 'amd',
     anonymous: false,
-    compatFix: true
+    compatFix: true,
+    packageName: options.packageName
   });
 }
 
 function transpileGlobals(tree, options) {
-  return filterES6Modules(tree, extend({
+  return filterES6Modules(tree, extend({}, options, {
     moduleType: 'globals',
     anonymous: false,
-  }, options));
+  }));
 }
 
 function concat(distDir) {
