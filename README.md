@@ -1,6 +1,8 @@
 broccoli-dist-es6-module
 ===================
 
+![demo](http://recordit.co/JYRVed4heS.gif)
+
 Author your library in ES6 modules and distribute in everything under
 the sun:
 
