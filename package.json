@@ -11,6 +11,7 @@
   "dependencies": {
     "broccoli-static-compiler": "0.0.5",
     "broccoli-concat": "git://github.com/rpflorence/broccoli-concat#broccoli-dep",
-    "extend": "~1.2.1"
+    "extend": "~1.2.1",
+    "broccoli-es6-module-filter": "~0.1.1"
   }
 }
