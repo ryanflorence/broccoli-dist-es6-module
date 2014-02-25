@@ -2,7 +2,7 @@ define("fake-lib/bar",
   ["./foo","exports"],
   function(__dependency1__, __exports__) {
     "use strict";
-    var foo = __dependency1__["default"];
+    var foo = __dependency1__["default"] || __dependency1__;
 
     var bar = function($el) {
       foo($el);
@@ -13,7 +13,7 @@ define("fake-lib/bar",
   ["jquery","exports"],
   function(__dependency1__, __exports__) {
     "use strict";
-    var jQuery = __dependency1__["default"];
+    var jQuery = __dependency1__["default"] || __dependency1__;
 
     var foo = function($el) {
       $el.hide();

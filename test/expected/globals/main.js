@@ -7,7 +7,7 @@
   };
 
   __exports__.bar = bar;
-})(window, ./foo);(function(__exports__, __dependency1__) {
+})(myNamespace, myNamespace.foo);(function(__exports__, __dependency1__) {
   "use strict";
   var jQuery = __dependency1__;
 
@@ -16,8 +16,8 @@
   };
 
   __exports__.foo = foo;
-})(window, jquery);(function(__exports__) {
+})(myNamespace, jQuery);(function(__exports__) {
   "use strict";
   var lol = 'lol';
   __exports__.lol = lol;
-})(window);
+})(myNamespace);
