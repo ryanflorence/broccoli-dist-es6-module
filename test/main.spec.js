@@ -5,7 +5,7 @@ describe('broccoli-dist-es6-module', function() {
   it('is tested like a sledgehammer', function() {
     cd('examples/multiple');
     rm('-rf', 'dist');
-    exec('./node_modules/.bin/broccoli build dist');
+    exec('../../node_modules/.bin/broccoli build dist');
     cd('dist');
     var actual = {
       amd: cat('amd/bar.js', 'amd/foo.js', 'amd/main.js'),
