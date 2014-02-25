@@ -1,5 +1,7 @@
 broccoli-dist-es6-module
-===================
+========================
+
+[![Build Status](https://travis-ci.org/rpflorence/broccoli-dist-es6-module.png)](https://travis-ci.org/rpflorence/broccoli-dist-es6-module)
 
 ![demo](http://recordit.co/JYRVed4heS.gif)
 

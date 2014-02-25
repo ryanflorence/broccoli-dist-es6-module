@@ -4,7 +4,7 @@
   "description": "Author in ES6 modules, distribute in cjs, amd, named-amd, and globals",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/**/*.spec.js --reporter tap"
   },
   "author": "Ryan Florence",
   "license": "MIT",
@@ -13,5 +13,10 @@
     "broccoli-concat": "git://github.com/rpflorence/broccoli-concat#broccoli-dep",
     "extend": "~1.2.1",
     "broccoli-es6-module-filter": "^0.1.4"
+  },
+  "devDependencies": {
+    "mocha": "^1.17.1",
+    "broccoli": "^0.2.0",
+    "shelljs": "^0.2.6"
   }
 }
