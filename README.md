@@ -66,8 +66,11 @@ Open up output to see the results.
 Options
 -------
 
-- `global` - the global to attach your modules to.
-- `imports` - object map of module ids to global variable names.
+- `packageName` - for named AMD builds, the name of your package
+- `main` - for named AMD builds, the script to be returned with
+  `require(['your-package-name'])`;
+- `global` - the global to attach your modules to
+- `imports` - object map of module ids to global variable names
 
 Notes
 -----

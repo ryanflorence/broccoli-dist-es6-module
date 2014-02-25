@@ -1,8 +1,9 @@
-var makeES6Module = require('broccoli-dist-es6-module');
+var makeES6Module = require('../../index');
 
 module.exports = function(broccoli) {
   return makeES6Module(broccoli.makeTree('lib'), {
     global: 'myNamespace',
+    main: 'main',
     packageName: 'fake-lib',
     imports: {
       'jquery': 'jQuery',

@@ -51,7 +51,8 @@ function transpileNamedAMD(tree, options) {
     moduleType: 'amd',
     anonymous: false,
     compatFix: true,
-    packageName: options.packageName
+    packageName: options.packageName,
+    main: options.main
   });
 }
 
@@ -70,3 +71,4 @@ function concat(distDir) {
     });
   };
 }
+
