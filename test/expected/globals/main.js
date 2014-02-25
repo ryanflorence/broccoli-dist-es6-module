@@ -7,7 +7,9 @@
   };
 
   __exports__.bar = bar;
-})(myNamespace, myNamespace.foo);(function(__exports__, __dependency1__) {
+})((window['lib']||(window['lib']={}))['bar']={}, lib.foo);
+
+(function(__exports__, __dependency1__) {
   "use strict";
   var jQuery = __dependency1__;
 
@@ -16,8 +18,10 @@
   };
 
   __exports__.foo = foo;
-})(myNamespace, jQuery);(function(__exports__) {
+})((window['lib']||(window['lib']={}))['foo']={}, jQuery);
+
+(function(__exports__) {
   "use strict";
   var lol = 'lol';
   __exports__.lol = lol;
-})(myNamespace);
+})((window['lib']||(window['lib']={}))['main']={});

@@ -1,4 +1,4 @@
-define("fake-lib/bar",
+define("lib/bar",
   ["./foo","exports"],
   function(__dependency1__, __exports__) {
     "use strict";
@@ -9,7 +9,9 @@ define("fake-lib/bar",
     };
 
     __exports__["default"] = bar;
-  });define("fake-lib/foo",
+  });
+
+define("lib/foo",
   ["jquery","exports"],
   function(__dependency1__, __exports__) {
     "use strict";
@@ -20,7 +22,9 @@ define("fake-lib/bar",
     };
 
     __exports__["default"] = foo;
-  });define("fake-lib",
+  });
+
+define("lib",
   ["exports"],
   function(__exports__) {
     "use strict";
