@@ -31,45 +31,50 @@ require('broccoli-dist-es6-module')(tree);
 Sample `Brocfile.js`:
 
 ```js
-var makeES6Module = require('broccoli-dist-es6-module');
+var makeES6Module = require('../../index');
 
 module.exports = function(broccoli) {
 
-  // if your source files live in `lib`
+  // lets say your source files live in `lib`
   var tree = broccoli.makeTree('lib');
 
   return makeES6Module(tree, {
 
-    // the global you want your modules attached to in the globals build
-    global: 'ic',
+    // for globals: which global to export your modules to
+    global: 'myNamespace',
 
-    // maps es6 import ids to the global variables for globals build
-    // if they are identical, you don't need to configure anything
+    // for named-amd: the prefix to all ids
+    // ex. `define('fake-lib/foo', ...)
+    packageName: 'fake-lib',
+
+    // for named-amd: which module lives on the the packageName's id
+    // ex. `define('fake-lib', ...)` instead of:
+    //     `define('fake-lib/index', ...)
+    main: 'index',
+
+    // for globals: maps es6 import ids to the global variables
     imports: {
-      'ember': 'Ember',
       'jquery': 'jQuery',
-      'ic-ajax': 'ic.ajax',
-      // relative paths must be shimmed (I would like to script this)
-      './foo': 'ic.foo'
+      // relative paths must be shimmed, too
+      './foo': 'myNamespace.foo'
     }
   });
-
 };
 ```
 
 And then run broccoli:
 
 ```sh
-$ broccoli build output
+$ broccoli build dist
 ```
 
-Open up output to see the results.
+Open up `dist` to see the results.
 
 Options
 -------
 
-- `packageName` - for named AMD builds, the name of your package
-- `main` - for named AMD builds, the script to be returned with
+- `packageName` - for named-amd, the name of your package
+- `main` - for named-amd, the script to be returned with
   `require(['your-package-name'])`;
 - `global` - the global to attach your modules to
 - `imports` - object map of module ids to global variable names
@@ -77,20 +82,13 @@ Options
 Notes
 -----
 
-- This depends this open pull request, https://github.com/square/es6-module-transpiler/pull/98
+- This depends on this open pull request, https://github.com/square/es6-module-transpiler/pull/98
 
-- This uses the controversial `compatFix` option of the
-  es6-module-transpiler which is not necessarily future proof (but
-  without it we couldn't `import jQuery from 'jquery'`).
+- This uses the `compatFix` option of the es6-module-transpiler which is
+  not necessarily future proof (but without it we couldn't `import
+  jQuery from 'jquery'`).
 
 - Relative file path imports have to all be named in the `imports`
   option for the globals build to work until I (or you) write script to
   do it for us.
-
-TODO:
------
-
-- Tests, ofc.
-- Companion `release` script that publishes the cjs build to npm, and
-  the other three to bower.
 
