@@ -31,7 +31,7 @@ require('broccoli-dist-es6-module')(tree);
 Sample `Brocfile.js`:
 
 ```js
-var makeES6Module = require('../../index');
+var makeES6Module = require('broccoli-dist-es6-module');
 
 module.exports = function(broccoli) {
 
