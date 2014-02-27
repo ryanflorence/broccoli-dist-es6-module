@@ -24,7 +24,7 @@ Usage
 -----
 
 ```js
-// give it a tree and two options:
+// give it a tree and some options:
 makeModules('broccoli-dist-es6-module')(tree, {
   main: 'index',
   global: 'MyLib',
@@ -43,8 +43,14 @@ module.exports = function(broccoli) {
   var src = broccoli.makeTree('lib');
 
   return makeModules(tree, {
+
+    // the entry script, and module that becomes the global
     main: 'index',
+
+    // will become window.MyLib with the exports from `main`
     global: 'MyLib',
+
+    // the prefix for named-amd modules
     packageName: 'my-lib'
   });
 
