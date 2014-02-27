@@ -3,7 +3,7 @@ broccoli-dist-es6-module
 
 [![Build Status](https://travis-ci.org/rpflorence/broccoli-dist-es6-module.png)](https://travis-ci.org/rpflorence/broccoli-dist-es6-module)
 
-![demo](http://recordit.co/JYRVed4heS.gif)
+![demo](http://recordit.co/D0rmdYb2Vp/gif)
 
 Author your library in ES6 modules and distribute in everything under
 the sun:
