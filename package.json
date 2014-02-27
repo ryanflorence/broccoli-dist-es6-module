@@ -12,7 +12,10 @@
     "broccoli-static-compiler": "^0.0.5",
     "broccoli-concat": "git://github.com/rpflorence/broccoli-concat#broccoli-dep",
     "extend": "~1.2.1",
-    "broccoli-es6-module-filter": "^0.1.6"
+    "broccoli-es6-module-filter": "^0.1.6",
+    "broccoli-transform": "^0.1.1",
+    "browserify": "^3.31.2",
+    "rsvp": "^3.0.6"
   },
   "devDependencies": {
     "mocha": "^1.17.1",

@@ -1,33 +1,27 @@
-define("lib/bar",
-  ["./foo","exports"],
-  function(__dependency1__, __exports__) {
+define("arithmetic",
+  ["./sum","./product","exports"],
+  function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
-    var foo = __dependency1__["default"] || __dependency1__;
-
-    var bar = function($el) {
-      foo($el);
-    };
-
-    __exports__["default"] = bar;
+    var sum = __dependency1__["default"] || __dependency1__;
+    var product = __dependency2__["default"] || __dependency2__;
+    __exports__.sum = sum;
+    __exports__.product = product;
   });
 
-define("lib/foo",
-  ["jquery","exports"],
-  function(__dependency1__, __exports__) {
-    "use strict";
-    var jQuery = __dependency1__["default"] || __dependency1__;
-
-    var foo = function($el) {
-      $el.hide();
-    };
-
-    __exports__["default"] = foo;
-  });
-
-define("lib",
+define("arithmetic/product",
   ["exports"],
   function(__exports__) {
     "use strict";
-    var lol = 'lol';
-    __exports__.lol = lol;
+    __exports__["default"] = function(x, y) {
+      return x * y;
+    };
+  });
+
+define("arithmetic/sum",
+  ["exports"],
+  function(__exports__) {
+    "use strict";
+    __exports__["default"] = function(x, y) {
+      return x + y;
+    };
   });

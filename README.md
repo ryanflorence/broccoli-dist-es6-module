@@ -24,41 +24,30 @@ Usage
 -----
 
 ```js
-// at its simplest form, just give it a tree
-require('broccoli-dist-es6-module')(tree);
+// give it a tree and two options:
+makeModules('broccoli-dist-es6-module')(tree, {
+  main: 'index',
+  global: 'MyLib',
+  packageName: 'my-lib'
+});
 ```
 
 Sample `Brocfile.js`:
 
 ```js
-var makeES6Module = require('../../index');
+var makeModules = require('../../index');
 
 module.exports = function(broccoli) {
 
-  // lets say your source files live in `lib`
-  var tree = broccoli.makeTree('lib');
+  // make a tree from your source files
+  var src = broccoli.makeTree('lib');
 
-  return makeES6Module(tree, {
-
-    // for globals: which global to export your modules to
-    global: 'myNamespace',
-
-    // for named-amd: the prefix to all ids
-    // ex. `define('fake-lib/foo', ...)
-    packageName: 'fake-lib',
-
-    // for named-amd: which module lives on the the packageName's id
-    // ex. `define('fake-lib', ...)` instead of:
-    //     `define('fake-lib/index', ...)
+  return makeModules(tree, {
     main: 'index',
-
-    // for globals: maps es6 import ids to the global variables
-    imports: {
-      'jquery': 'jQuery',
-      // relative paths must be shimmed, too
-      './foo': 'myNamespace.foo'
-    }
+    global: 'MyLib',
+    packageName: 'my-lib'
   });
+
 };
 ```
 
@@ -73,22 +62,20 @@ Open up `dist` to see the results.
 Options
 -------
 
+- `main` - the entry script to your package, determines which module
+  exports to your global namespace, also the package that is returned in
+  AMD with `require(['your-package-name'])`
+
 - `packageName` - for named-amd, the name of your package
-- `main` - for named-amd, the script to be returned with
   `require(['your-package-name'])`;
-- `global` - the global to attach your modules to
-- `imports` - object map of module ids to global variable names
+
+- `global` - the global to attach your `main` module to
+
 
 Notes
 -----
 
-- This depends on this open pull request, https://github.com/square/es6-module-transpiler/pull/98
-
 - This uses the `compatFix` option of the es6-module-transpiler which is
   not necessarily future proof (but without it we couldn't `import
   jQuery from 'jquery'`).
-
-- Relative file path imports have to all be named in the `imports`
-  option for the globals build to work until I (or you) write script to
-  do it for us.
 
