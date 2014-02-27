@@ -1,14 +1,10 @@
-var makeES6Module = require('../../index');
+var makeModules = require('../../index');
 
 module.exports = function(broccoli) {
-  return makeES6Module(broccoli.makeTree('lib'), {
+  return makeModules(broccoli.makeTree('lib'), {
     main: 'main',
-    packageName: 'lib',
-    namespace: 'lib',
-    imports: {
-      'jquery': 'jQuery',
-      './foo': 'lib.foo'
-    }
+    packageName: 'arithmetic',
+    global: 'Arithmetic'
   });
 };
 

@@ -1,3 +1,4 @@
-var lol = 'lol';
-export { lol };
+import sum from './sum';
+import product from './product';
+export { sum, product };
 
