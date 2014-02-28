@@ -28,7 +28,10 @@ Usage
 makeModules('broccoli-dist-es6-module')(tree, {
   main: 'index',
   global: 'MyLib',
-  packageName: 'my-lib'
+  packageName: 'my-lib',
+  shim: {
+    'jquery': 'jQuery'
+  }
 });
 ```
 
@@ -51,7 +54,13 @@ module.exports = function(broccoli) {
     global: 'MyLib',
 
     // the prefix for named-amd modules
-    packageName: 'my-lib'
+    packageName: 'my-lib',
+
+    // global output only: naive shimming, when the id 'jquery' is imported,
+    // substitute with `window.jQuery` instead
+    shim: {
+      'jquery': 'jQuery'
+    }
   });
 
 };
@@ -72,11 +81,13 @@ Options
   exports to your global namespace, also the package that is returned in
   AMD with `require(['your-package-name'])`
 
-- `packageName` - for named-amd, the name of your package
+- `packageName` - _named-amd_, the name of your package
   `require(['your-package-name'])`;
 
-- `global` - the global to attach your `main` module to
+- `global` - _globals_: the global to attach your `main` module to
 
+- `shim` - _globals_: map import string ids to objects on `window`, see
+  usage above or the examples
 
 Notes
 -----
@@ -84,4 +95,6 @@ Notes
 - This uses the `compatFix` option of the es6-module-transpiler which is
   not necessarily future proof (but without it we couldn't `import
   jQuery from 'jquery'`).
+
+- The shimming is really hacky, but its working.
 

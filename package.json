@@ -15,7 +15,8 @@
     "broccoli-es6-module-filter": "^0.1.6",
     "broccoli-transform": "^0.1.1",
     "browserify": "^3.31.2",
-    "rsvp": "^3.0.6"
+    "rsvp": "^3.0.6",
+    "through": "^2.3.4"
   },
   "devDependencies": {
     "mocha": "^1.17.1",
