@@ -1,7 +1,8 @@
 var makeModules = require('../../index');
 
 module.exports = function(broccoli) {
-  return makeModules(broccoli.makeTree('lib'), {
+  var css = broccoli.makeTree('css');
+  var lib = makeModules(broccoli.makeTree('lib'), {
     main: 'main',
     packageName: 'arithmetic',
     global: 'Arithmetic',
@@ -9,5 +10,6 @@ module.exports = function(broccoli) {
       'jquery': 'jQuery'
     }
   });
+  return [lib, css];
 };
 
