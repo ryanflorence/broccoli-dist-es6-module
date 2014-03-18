@@ -11,18 +11,19 @@ describe('broccoli-dist-es6-module', function() {
       amd: cat('amd/main.js', 'amd/product.js', 'amd/sum.js'),
       cjs: cat('cjs/main.js', 'cjs/product.js', 'cjs/sum.js'),
       globals: cat('globals/main.js'),
-      namedAmd: cat('named-amd/main.js')
+      namedAmd: cat('named-amd/main.js'),
+      css: cat('multiple.css')
     };
     cd('../../../test/expected');
     var expected = {
       amd: cat('amd/main.js', 'amd/product.js', 'amd/sum.js'),
       cjs: cat('cjs/main.js', 'cjs/product.js', 'cjs/sum.js'),
       globals: cat('globals/main.js'),
-      namedAmd: cat('named-amd/main.js')
+      namedAmd: cat('named-amd/main.js'),
+      css: cat('multiple.css')
     };
     // sanity assertion, make sure all files aren't empty
     assert.ok(actual.amd.match(/define/));
     assert.deepEqual(actual, expected);
   });
 });
-

@@ -1,3 +1,4 @@
+var broccoli = require('broccoli');
 var filterES6Modules = require('broccoli-es6-module-filter');
 var pickFiles = require('broccoli-static-compiler');
 var broconcat = require('broccoli-concat');
@@ -6,13 +7,17 @@ var globalize = require('./lib/global-transform');
 
 module.exports = function (tree, options) {
   validateOptions(options);
-  return [
+  return mergeTrees([
     makeDist('cjs')(transpileCJS(tree)),
     makeDist('amd')(transpileAMD(tree)),
     makeConcatDist('named-amd')(transpileNamedAMD(tree, options)),
     makeDist('globals')(transpileGlobals(tree, options))
-  ];
+  ]);
 };
+
+function mergeTrees(trees) {
+  return new broccoli.MergedTree(trees);
+}
 
 function validateOptions(options) {
   if (!options.main) throw new Error('You must provide a `main` option so I know which file is your entry script.');
