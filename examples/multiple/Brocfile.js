@@ -1,7 +1,7 @@
 var makeModules = require('../../index');
 
 module.exports = function(broccoli) {
-  return makeModules(broccoli.makeTree('lib'), {
+  return makeModules('lib', {
     main: 'main',
     packageName: 'arithmetic',
     global: 'Arithmetic',
