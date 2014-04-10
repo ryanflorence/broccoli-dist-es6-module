@@ -3,15 +3,17 @@ var pickFiles = require('broccoli-static-compiler');
 var broconcat = require('broccoli-concat');
 var extend = require('extend');
 var globalize = require('./lib/global-transform');
+var mergeTrees = require('broccoli-merge-trees');
+
 
 module.exports = function (tree, options) {
   validateOptions(options);
-  return [
+  return mergeTrees([
     makeDist('cjs')(transpileCJS(tree)),
     makeDist('amd')(transpileAMD(tree)),
     makeConcatDist('named-amd')(transpileNamedAMD(tree, options)),
     makeDist('globals')(transpileGlobals(tree, options))
-  ];
+  ], { overwrite: true });
 };
 
 function validateOptions(options) {
@@ -22,7 +24,7 @@ function validateOptions(options) {
 function makeConcatDist(dir) {
   return function(tree) {
     return concat(dir)(makeDist(dir)(tree));
-  }
+  };
 }
 
 function makeDist(dir) {
@@ -70,6 +72,3 @@ function concat(distDir) {
     });
   };
 }
-
-
-
