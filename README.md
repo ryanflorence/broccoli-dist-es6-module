@@ -20,50 +20,29 @@ Installation
 $ npm install broccoli-dist-es6-module
 ```
 
-Usage
------
+Usage: Sample `Brocfile.js`
+---------------------------
 
 ```js
-// give it a tree and some options:
-makeModules('broccoli-dist-es6-module')(tree, {
-  main: 'index',
-  global: 'MyLib',
-  packageName: 'my-lib',
+var dist = require('broccoli-dist-es6-module');
+
+module.exports = dist('lib', {
+
+  // the entry script, and module that becomes the global
+  main: 'main',
+
+  // will become window.ic.ajax with the exports from `main`
+  global: 'ic.ajax',
+
+  // the prefix for named-amd modules
+  packageName: 'ic-ajax',
+
+  // global output only: naive shimming, when the id 'ember' is imported,
+  // substitute with `window.Ember` instead
   shim: {
-    'jquery': 'jQuery'
+    'ember': 'Ember'
   }
 });
-```
-
-Sample `Brocfile.js`:
-
-```js
-var makeModules = require('../../index');
-
-module.exports = function(broccoli) {
-
-  // make a tree from your source files
-  var src = broccoli.makeTree('lib');
-
-  return makeModules(tree, {
-
-    // the entry script, and module that becomes the global
-    main: 'index',
-
-    // will become window.MyLib with the exports from `main`
-    global: 'MyLib',
-
-    // the prefix for named-amd modules
-    packageName: 'my-lib',
-
-    // global output only: naive shimming, when the id 'jquery' is imported,
-    // substitute with `window.jQuery` instead
-    shim: {
-      'jquery': 'jQuery'
-    }
-  });
-
-};
 ```
 
 And then run broccoli:
