@@ -10,7 +10,7 @@ module.exports = function (tree, options) {
   return mergeTrees([
     makeDist('cjs')(transpileCJS(tree)),
     makeDist('amd')(transpileAMD(tree)),
-    makeConcatDist('named-amd')(transpileNamedAMD(tree, options)),
+    makeConcatDist('named-amd', options)(transpileNamedAMD(tree, options)),
     makeDist('globals')(transpileGlobals(tree, options))
   ]);
 };
@@ -20,9 +20,9 @@ function validateOptions(options) {
   if (!options.global) throw new Error('You must provide a `global` option so I know what to attach your main script to on the window.');
 }
 
-function makeConcatDist(dir) {
+function makeConcatDist(dir, options) {
   return function(tree) {
-    return concat(dir)(makeDist(dir)(tree));
+    return concat(dir, options)(makeDist(dir)(tree));
   }
 }
 
@@ -63,11 +63,11 @@ function transpileGlobals(tree, options) {
   return globalize(transpileCJS(tree), options);
 }
 
-function concat(distDir) {
+function concat(distDir, options) {
   return function(tree) {
     return broconcat(tree, {
       inputFiles: ['**/*.js'],
-      outputFile: '/'+distDir+'/main.js'
+      outputFile: '/'+distDir+'/'+options.main+'.js'
     });
   };
 }
