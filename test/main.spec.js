@@ -1,5 +1,7 @@
 //var assert = require('assert');
 var assert = require('chai').assert;
+var ES6Module = require('../index');
+
 require('shelljs/global');
 
 describe('broccoli-dist-es6-module', function() {
@@ -27,6 +29,26 @@ describe('broccoli-dist-es6-module', function() {
     assert.equal(actual.cjs, expected.cjs);
     assert.equal(actual.globals, expected.globals);
     assert.equal(actual.namedAmd, expected.namedAmd);
+  });
+  it('only builds for targets specified', function() {
+    var output = ES6Module('.', {
+      global: 'Test.Package',
+      packageName: 'test-package',
+      main: 'index',
+      targets: [ 'amd', 'cjs' ]
+    });
+
+    assert.equal(output.inputTrees.length, 2);
+    assert.deepEqual(output.inputTrees.map(function(tree) { return tree.options.destDir; }), [ 'cjs', 'amd']);
+  });
+  it('will build all targets when none are specified', function() {
+    var output = ES6Module('.', {
+      global: 'Test.Package',
+      packageName: 'test-package',
+      main: 'index',
+    });
+
+    assert.equal(output.inputTrees.length, 4);
   });
 });
 

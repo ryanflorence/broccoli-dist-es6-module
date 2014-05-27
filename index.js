@@ -7,13 +7,21 @@ var mergeTrees = require('broccoli-merge-trees');
 
 module.exports = function (tree, options) {
   validateOptions(options);
-  return mergeTrees([
-    makeDist('cjs')(transpileCJS(tree)),
-    makeDist('amd')(transpileAMD(tree)),
-    makeConcatDist('named-amd')(transpileNamedAMD(tree, options)),
-    makeDist('globals')(transpileGlobals(tree, options))
-  ]);
+
+  var targets = options.targets || [ 'cjs', 'amd', 'named-amd', 'globals' ];
+  var trees = [];
+
+  contains(targets, 'cjs')       && trees.push(makeDist('cjs')(transpileCJS(tree))),
+  contains(targets, 'amd')       && trees.push(makeDist('amd')(transpileAMD(tree))),
+  contains(targets, 'named-amd') && trees.push(makeConcatDist('named-amd')(transpileNamedAMD(tree, options))),
+  contains(targets, 'globals')   && trees.push(makeDist('globals')(transpileGlobals(tree, options)))
+
+  return mergeTrees(trees);
 };
+
+function contains(arr, element) {
+  return arr.indexOf(element) !== -1;
+}
 
 function validateOptions(options) {
   if (!options.main) throw new Error('You must provide a `main` option so I know which file is your entry script.');
