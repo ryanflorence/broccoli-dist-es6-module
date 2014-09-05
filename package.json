@@ -1,6 +1,6 @@
 {
   "name": "broccoli-dist-es6-module",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Author in ES6 modules, distribute in cjs, amd, named-amd, and globals",
   "main": "index.js",
   "scripts": {
