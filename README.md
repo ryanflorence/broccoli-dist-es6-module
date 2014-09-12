@@ -60,6 +60,8 @@ Options
   exports to your global namespace, also the package that is returned in
   AMD with `require(['your-package-name'])`
 
+- `targets` - which module systems to build for _(defaults to all)_
+
 - `packageName` - _named-amd_, the name of your package
   `require(['your-package-name'])`;
 
