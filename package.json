@@ -8,6 +8,10 @@
   },
   "author": "Ryan Florence",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rpflorence/broccoli-dist-es6-module.git"
+  },
   "dependencies": {
     "broccoli-static-compiler": "^0.1.4",
     "broccoli-concat": "^0.0.6",
