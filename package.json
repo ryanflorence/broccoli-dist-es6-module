@@ -14,7 +14,7 @@
     "extend": "~1.2.1",
     "broccoli-es6-module-filter": "^0.1.9",
     "broccoli-transform": "^0.1.1",
-    "browserify": "^3.31.2",
+    "browserify": "^9.0.3",
     "rsvp": "^3.0.6",
     "through": "^2.3.4",
     "broccoli-merge-trees": "^0.1.3"
